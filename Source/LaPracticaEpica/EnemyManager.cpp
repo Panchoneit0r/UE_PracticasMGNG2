@@ -20,7 +20,7 @@ AEnemyManager::AEnemyManager() :
 int AEnemyManager::GetNumberOfEnemies() const
 {
 	int LivingEnemies=0;
-	for(TActorIterator<AActor>ActorItr(GetWorld(),EnemyClass);ActorItr;++ActorItr)
+	for(TActorIterator<AActor>ActorItr(GetWorld(),EnemiesC);ActorItr;++ActorItr)
 	{
 		LivingEnemies++;
 	}
@@ -46,7 +46,9 @@ FVector AEnemyManager::GetRandomLocationFromReferencePlane() const
 void AEnemyManager::SpawnEnemy()
 {
 	FVector EnemySpawnLocation = GetRandomLocationFromReferencePlane();
-	GetWorld()->SpawnActor(EnemyClass,&EnemySpawnLocation);
+	int randomEnemy = FMath::FRandRange(0, 3);
+	
+	GetWorld()->SpawnActor(EnemyClass[randomEnemy],&EnemySpawnLocation);
 }
 
 // Called when the game starts or when spawned

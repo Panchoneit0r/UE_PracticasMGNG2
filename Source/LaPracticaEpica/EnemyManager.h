@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Enemies.h"
 #include "GameFramework/Actor.h"
 #include "EnemyManager.generated.h"
 
@@ -40,6 +41,9 @@ public:
 	TWeakObjectPtr<AActor> ReferencePlane;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Spawner")
-	TSubclassOf<AActor> EnemyClass;
+	TArray<TSubclassOf<AActor>> EnemyClass;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Spawner")
+	TSubclassOf<AEnemies> EnemiesC;
 
 };
